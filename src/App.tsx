@@ -40,7 +40,7 @@ function App() {
   return (
     <div >
 <Table dataSource={dataSource} columns={columns} />
-<div ></div>
+<div className=' bg-Primary-dark w-96 h-96'></div>
     </div>
   );
 }
