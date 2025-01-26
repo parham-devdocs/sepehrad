@@ -1,48 +1,22 @@
-import React from 'react';
-import './App.css';
-// import 'antd/dist/antd.css'; // Ensure Ant Design CSS is imported
-import { Table } from "antd";
+import Home from "./pages/Home";
+import Layout from "./pages/Layout";
+import Users from "./pages/Users";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const dataSource = [
-  {
-    key: '1',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-  },
-  {
-    key: '2',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
-  },
-];
 
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-];
-
-function App() {
+const App = () => {
   return (
-    <div >
-<Table dataSource={dataSource} columns={columns} />
-<div className=' bg-Primary-dark w-96 h-96'></div>
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} /> {/* Default route */}
+            <Route path="users" element={<Users />} /> {/* About page */}
+          </Route>
+        </Routes>
+      </Router>{" "}
+    </>
   );
-}
+};
 
 export default App;
