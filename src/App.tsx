@@ -27,7 +27,7 @@ const App = () => {
             <Route path="Bills">
               <Route path="billManagement" element={<BillManagement />} />
               <Route path="edit/:id" element={<EditBill />} />
-              <Route path="create/:id" element={<CreateBill />} />
+              <Route path="create" element={<CreateBill />} />
             </Route>
             <Route path="creditors">
               <Route path="create" element={<CreateCreditor />} />

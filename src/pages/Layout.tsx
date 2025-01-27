@@ -1,13 +1,12 @@
 // Layout.js
 import { Outlet } from "react-router-dom";
+import Navbar from "../components/navbar";
 
 const Layout = () => {
   return (
     <div>
-      <header>
-        <h1>My App</h1>
-        {/* Add navigation links here */}
-      </header>
+      <Navbar />
+
       <main>
         <Outlet /> {/* Renders the matched child route */}
       </main>
