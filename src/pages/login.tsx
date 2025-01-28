@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useRef } from "react";
 import NeonLight from "/NeonLights.png";
 import Logo from "/SepehradLogo.png";
 import Input from "../components/input";
@@ -7,13 +7,10 @@ import { useMutation } from "react-query";
 import cookie from "js-cookie";
 import axiosInstance from "../lib/axios";
 import Spinner from "../components/spinner";
+import { userLoginType } from "../types";
+import useLoginValidation from "../hooks/loginValidation";
 
-
-type Login = {
-  password: string;
-  username: string;
-};
-const postData = async (data:Login) => {
+const postData = async (data:userLoginType) => {
   const response = await axiosInstance.post("/login/", data);
   return response.data;
 };
@@ -21,8 +18,9 @@ const postData = async (data:Login) => {
 const Login = () => {
   const usernameRef = useRef<HTMLInputElement>(null); // Ref for the username input
   const passwordRef = useRef<HTMLInputElement>(null); // Ref for the password input
-  const [errors, setErrors] = useState<Login>({ password: "", username: "" });
-  const { mutate, isLoading, isError, error } = useMutation(postData, {
+  // const [errors, setErrors] = useState<userLoginType>({ password: "", username: "" });
+  const {validateLogin,errors,setErrors} = useLoginValidation({ usernameRef, passwordRef });
+  const { mutate, isLoading } = useMutation(postData, {
     onSuccess: async (data: any) => {
       const accessToken = await data.data.access;
       const refreshToken = await data.data.refresh;
@@ -37,28 +35,11 @@ const Login = () => {
     },
     onError: (error) => console.error("Error:", error),
   });
-  const handleInputChange = (field: keyof Login) => {
-    // Check if the field is being typed into
-    if (field === "username" && usernameRef.current?.value) {
-      // Clear the error message while typing
-      setErrors((prevErrors) => ({ ...prevErrors, [field]: "" }));
-    } else if (field === "password" && passwordRef.current?.value) {
-      setErrors((prevErrors) => ({ ...prevErrors, [field]: "" }));
-    }
-
-    // Check for empty fields and set error messages accordingly
-    if (field === "username" && !usernameRef.current?.value) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [field]: "نام کاربری الزامی است",
-      }));
-    }
-    if (field === "password" && !passwordRef.current?.value) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [field]: "رمز عبور الزامی است",
-      }));
-    }
+  const handleInputChange = () => {
+ 
+    validateLogin("password")
+    validateLogin("username")
+    console.log(errors)
   };
 
   const formSubmit = (e: FormEvent) => {
@@ -102,7 +83,7 @@ const Login = () => {
               <Input
                 ref={usernameRef}
                 placeholder="نام کاربری"
-                onChange={() => handleInputChange("username")}
+                onChange={() => handleInputChange()}
               />
               {errors.username && (
                 <span className="text-red-500 text-[13px] text-right block animate-fade-in-scale">
@@ -116,7 +97,7 @@ const Login = () => {
                 ref={passwordRef}
                 type="password"
                 placeholder="گذرواژه"
-                onChange={() => handleInputChange("password")}
+                onChange={() => handleInputChange()}
               />
               {errors.password && (
                 <span className="text-red-500  text-[13px] text-right block animate-fade-in-scale">
