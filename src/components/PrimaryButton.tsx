@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 type TextAlign = "center" | "left" | "right";
 
 interface PrimaryButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
   align: TextAlign;
   children: ReactNode; // Define children as a prop
 }

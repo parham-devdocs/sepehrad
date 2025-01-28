@@ -1,6 +1,5 @@
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
-import Users from "./pages/Users";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
 import BillManagement from "./pages/dashboard/bills/billManagement";
