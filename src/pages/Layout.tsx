@@ -7,15 +7,13 @@ const Layout = () => {
     <div className="flex min-h-[90vh] overflow-x-hidden">
       <div className="flex-1">
         <Navbar />
-        <main>
+        <main className=" mt-8  py-8  px-10">
           <Outlet /> {/* Renders the matched child route */}
         </main>
-        
       </div>
       <Sidebar /> {/* Adjust width as needed */}
     </div>
   );
 };
-
 
 export default Layout;
