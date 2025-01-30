@@ -8,8 +8,8 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import { IoIosListBox } from "react-icons/io";
 import { FaListCheck } from "react-icons/fa6";
 import { GrTask } from "react-icons/gr";
-
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import useSidebarToggle from "../hooks/useSidebarToggle";
 
 type DashboardLinkType = {
   text: string;
@@ -60,24 +60,31 @@ const dashboardLinks: DashboardLinkType[] = [
 ];
 
 const Sidebar = () => {
-  const [sidebarIsOpen, setSidebarIsOpen] = useState(true);
+  const { mobileMode } = useSidebarToggle();
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(!mobileMode); // Start closed in mobile mode
+
+  const toggleSidebar = () => {
+    if (!mobileMode) {
+      setSidebarIsOpen((prev) => !prev);
+    }
+  };
+  useEffect(() => {
+          setSidebarIsOpen((prev) => !prev);
+
+  },[mobileMode])
+
   return (
     <div
-      className={` ${
+      className={`${
         sidebarIsOpen ? "w-[240px]" : "w-[80px]"
-      }  h-screen pt-12 px-6 bg-Background-dark transition-all duration-500 `}
+      } h-screen pt-12 px-6 bg-Background-dark transition-all duration-500`}
     >
       <div
-        className={` space-y-4 ${
-          sidebarIsOpen ? "w-[190px]" : "w-[50px] "
-        }  transition-all `}
+        className={`space-y-4 ${
+          sidebarIsOpen ? "w-[190px]" : "w-[50px]"
+        } transition-all`}
       >
-        <button
-          onClick={() => {
-            setSidebarIsOpen((prev) => !prev);
-          }}
-        
-        >
+        <button onClick={toggleSidebar}>
           <img src={Logo} alt="logo" />
         </button>
 
@@ -115,11 +122,11 @@ function SidebarLink({
       <NavLink
         onClick={() => financeToggleHandler(link.text)}
         to={link.link ? link.link : "#"}
-        className={`  ${
-          sidebarIsOpen ? " justify-end" : "justify-end "
-        } flex items-center  space-x-3 w-full px-4 text-[14px] py-2 bg-veronika text-Primary-main rounded-[8px] hover:bg-Primary-main hover:text-veronika transition-all duration-500`}
+        className={`${
+          sidebarIsOpen ? "justify-end" : "justify-end"
+        } flex items-center space-x-3 w-full px-4 text-[14px] py-2 bg-veronika text-Primary-main rounded-[8px] hover:bg-Primary-main hover:text-veronika transition-all duration-500`}
       >
-        {sidebarIsOpen && <p className=" animate-fade-in">{link.text}</p>}
+        {sidebarIsOpen && <p className="animate-fade-in">{link.text}</p>}
         {link.icon}
       </NavLink>
       <div
@@ -128,7 +135,7 @@ function SidebarLink({
         }`}
       >
         {link.sublinks && toggleFinance && (
-          <div className="space-y-4 mt-4 animate-fade-in transition-all duration-500 ">
+          <div className="space-y-4 mt-4 animate-fade-in transition-all duration-500">
             {link.sublinks.map((sublink) => (
               <SidebarLink
                 key={sublink.text}

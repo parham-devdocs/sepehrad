@@ -29,7 +29,7 @@ const Navbar = () => {
       </div>
       <div className=" flex gap-4 items-center">
         <p className=" text-[20px] font-[500]">{username}</p>
-        <img src={Logo} />
+        <img src={Logo} className=" w-[55px] h-[55px]" />
       </div>
     </div>
   );
@@ -39,7 +39,7 @@ export default Navbar;
 
 function SearchInput() {
   return (
-    <div className=" rounded-[8px] bg-Primary-super-light border-[1px] w-[250px] h-[48px] flex py-2 px-3 items-center justify-between ">
+    <div className=" rounded-[8px] bg-Primary-super-light border-[1px] w-[250px] h-[48px] lg:flex py-2 px-3 items-center justify-between hidden ">
       <button>
         <img src={Search} alt="search icon" />
       </button>

@@ -14,7 +14,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center justify-center w-[48px] h-[48px] rounded-[8px] border-[1px] ${className}`}
+      className={`flex items-center justify-center lg:w-[48px] lg:h-[48px] w-[38px] h-[38px] rounded-[8px] border-[1px] ${className}`}
       aria-label="Icon button" // Improved accessibility
       >
           <img src={icon} alt="icon" />
