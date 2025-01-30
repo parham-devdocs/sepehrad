@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useSidebarToggle = () => {
-  const [mobileMode, setMobileMode] = useState<boolean>(
-    window.innerWidth < 450
-  );
+  const [mobileMode, setMobileMode] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = () => {
