@@ -1,7 +1,6 @@
 {
   "buildCommand": "next build",
   "devCommand": "next dev",
-  "cleanUrls": true,
   "routes": [
     {
       "src": "/login",
