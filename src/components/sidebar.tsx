@@ -67,7 +67,7 @@ const Sidebar = () => {
 
   const toggleSidebar = () => {
     if (!mobileMode) {
-      setSidebarIsOpen((prev) => !prev);
+      setSidebarIsOpen(true);
     }
   };
   useEffect(() => {
@@ -78,7 +78,7 @@ const Sidebar = () => {
     <div
       className={`${
         sidebarIsOpen ? "w-[240px]" : "w-[80px]"
-      } h-screen pt-12 px-6 bg-Background-dark transition-all duration-500 flex justify-center`}
+      } h-screen pt-12 px-6 bg-Background-dark transition-all duration-500 flex justify-center overflow-hidden`}
     >
       <div
         className={`space-y-4  ${
@@ -125,7 +125,7 @@ function SidebarLink({
         to={link.link ? link.link : "#"}
         className={`${
           sidebarIsOpen ? "justify-end" : "justify-end"
-        } flex items-center justify-between  max-h-10 animate-fade-in space-x-3 w-full px-4 text-[14px] py-2 bg-veronika text-Primary-main rounded-[8px] hover:bg-Primary-main hover:text-veronika transition-all duration-300`}
+        } flex items-center justify-between  max-h-10 animate-fade-in space-x-3 w-full px-4 text-[14px] py-2 bg-veronika text-Primary-main rounded-[8px] hover:bg-Primary-main hover:text-veronika transition-all duration-900`}
       >
         { link.text === "امور مالی" && <Arrow direction={toggleFinance ? "up":"down"} />}
         <div className=" flex gap-3 ">
@@ -141,7 +141,7 @@ function SidebarLink({
         }`}
       >
         {link.sublinks && toggleFinance && (
-          <div className="space-y-4 mt-4 animate-fade-in transition-all duration-300">
+          <div className="space-y-4 mt-4 animate-fade-in transition-all duration-500">
             {link.sublinks.map((sublink) => (
               <SidebarLink
                 key={sublink.text}
