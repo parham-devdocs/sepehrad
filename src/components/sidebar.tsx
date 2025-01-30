@@ -67,8 +67,9 @@ const Sidebar = () => {
 
   const toggleSidebar = () => {
     if (!mobileMode) {
-      setSidebarIsOpen(true);
+     return setSidebarIsOpen((prev)=>!prev);
     }
+    setSidebarIsOpen(false)
   };
   useEffect(() => {
     setSidebarIsOpen((prev) => !prev);
