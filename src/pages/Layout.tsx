@@ -10,9 +10,7 @@ const Layout = () => {
         <main>
           <Outlet /> {/* Renders the matched child route */}
         </main>
-        <footer>
-          <p>Footer content here</p>
-        </footer>
+        
       </div>
       <Sidebar /> {/* Adjust width as needed */}
     </div>

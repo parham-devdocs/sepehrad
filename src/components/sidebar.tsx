@@ -8,6 +8,8 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import { IoIosListBox } from "react-icons/io";
 import { FaListCheck } from "react-icons/fa6";
 import { GrTask } from "react-icons/gr";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 import { ReactNode, useEffect, useState } from "react";
 import useSidebarToggle from "../hooks/useSidebarToggle";
 
@@ -69,18 +71,17 @@ const Sidebar = () => {
     }
   };
   useEffect(() => {
-          setSidebarIsOpen((prev) => !prev);
-
-  },[mobileMode])
+    setSidebarIsOpen((prev) => !prev);
+  }, [mobileMode]);
 
   return (
     <div
       className={`${
         sidebarIsOpen ? "w-[240px]" : "w-[80px]"
-      } h-screen pt-12 px-6 bg-Background-dark transition-all duration-500`}
+      } h-screen pt-12 px-6 bg-Background-dark transition-all duration-500 flex justify-center`}
     >
       <div
-        className={`space-y-4 ${
+        className={`space-y-4  ${
           sidebarIsOpen ? "w-[190px]" : "w-[50px]"
         } transition-all`}
       >
@@ -124,10 +125,15 @@ function SidebarLink({
         to={link.link ? link.link : "#"}
         className={`${
           sidebarIsOpen ? "justify-end" : "justify-end"
-        } flex items-center space-x-3 w-full px-4 text-[14px] py-2 bg-veronika text-Primary-main rounded-[8px] hover:bg-Primary-main hover:text-veronika transition-all duration-500`}
+        } flex items-center justify-between  max-h-10 animate-fade-in space-x-3 w-full px-4 text-[14px] py-2 bg-veronika text-Primary-main rounded-[8px] hover:bg-Primary-main hover:text-veronika transition-all duration-300`}
       >
-        {sidebarIsOpen && <p className="animate-fade-in">{link.text}</p>}
-        {link.icon}
+        { link.text === "امور مالی" && <Arrow direction={toggleFinance ? "up":"down"} />}
+        <div className=" flex gap-3 ">
+          {sidebarIsOpen && (
+            <p className="animate-fade-in transition-colors">{link.text}</p>
+          )}
+          {link.icon}
+        </div>
       </NavLink>
       <div
         className={`overflow-hidden transition-all duration-500 ease-in-out ${
@@ -135,7 +141,7 @@ function SidebarLink({
         }`}
       >
         {link.sublinks && toggleFinance && (
-          <div className="space-y-4 mt-4 animate-fade-in transition-all duration-500">
+          <div className="space-y-4 mt-4 animate-fade-in transition-all duration-300">
             {link.sublinks.map((sublink) => (
               <SidebarLink
                 key={sublink.text}
@@ -148,4 +154,15 @@ function SidebarLink({
       </div>
     </div>
   );
+}
+
+
+function Arrow({direction}:{direction:string}) {
+  // const [text,setTex]=useState<string>("")
+  
+if (direction === "up") {
+ return <IoIosArrowUp className=" mr-16 animate-fade-in"/>
+
+}
+  return <IoIosArrowDown className=" mr-16 animate-fade-in"/>
 }

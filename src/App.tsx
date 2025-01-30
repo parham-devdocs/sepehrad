@@ -15,6 +15,7 @@ import CreateDebt from "./pages/dashboard/debt/createDebt";
 import EditDebt from "./pages/dashboard/debt/editDebt";
 import DebtList from "./pages/dashboard/debt/debtList";
 import ProtectedWrapper from "./components/protectedWrapper";
+import NotFound from "./components/notFound";
 
 const App = () => {
   return (
@@ -44,7 +45,15 @@ const App = () => {
               <Route path="edit/:id" element={<EditDebt />} />
               <Route path="list" element={<DebtList />} />
             </Route>
-            <Route path="test" element={<ProtectedWrapper><span>1</span></ProtectedWrapper>}></Route>
+            <Route
+              path="test"
+              element={
+                <ProtectedWrapper>
+                  <span>1</span>
+                </ProtectedWrapper>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Router>{" "}

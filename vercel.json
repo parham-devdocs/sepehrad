@@ -1,0 +1,109 @@
+{
+  "buildCommand": "next build",
+  "devCommand": "next dev",
+  "cleanUrls": true,
+  "routes": [
+    {
+      "src": "/login",
+      "dest": "/login.tsx"
+    },
+    {
+      "src": "/",
+      "dest": "/index"
+    },
+    {
+      "src": "/Bills",
+      "dest": "/Bills/index.tsx"
+    },
+    {
+      "src": "/Bills/billManagement",
+      "dest": "/Bills/billManagement.tsx"
+    },
+    {
+      "src": "/Bills/edit/:id",
+      "dest": "/Bills/editBill.tsx"
+    },
+    {
+      "src": "/Bills/create",
+      "dest": "/Bills/createBill.tsx"
+    },
+    {
+      "src": "/creditors",
+      "dest": "/creditors/index.tsx"
+    },
+    {
+      "src": "/creditors/create",
+      "dest": "/creditors/createCreditor.tsx"
+    },
+    {
+      "src": "/creditors/:id",
+      "dest": "/creditors/singleCreditors.tsx"
+    },
+    {
+      "src": "/creditors/list",
+      "dest": "/creditors/creditorsList.tsx"
+    },
+    {
+      "src": "/payment",
+      "dest": "/payment/index.tsx"
+    },
+    {
+      "src": "/payment/create",
+      "dest": "/payment/createPayment.tsx"
+    },
+    {
+      "src": "/payment/edit/:id",
+      "dest": "/payment/editPayment.tsx"
+    },
+    {
+      "src": "/payment/list",
+      "dest": "/payment/paymentList.tsx"
+    },
+    {
+      "src": "/debt",
+      "dest": "/debt/index.tsx"
+    },
+    {
+      "src": "/debt/create",
+      "dest": "/debt/createDebt.tsx"
+    },
+    {
+      "src": "/debt/edit/:id",
+      "dest": "/debt/editDebt.tsx"
+    },
+    {
+      "src": "/debt/list",
+      "dest": "/debt/debtList.tsx"
+    },
+    {
+      "src": "/test",
+      "dest": "/test.tsx"
+    },
+    {
+      "src": "*",
+      "dest": "/notFound.tsx"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/home",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
+    }
+  ]
+}

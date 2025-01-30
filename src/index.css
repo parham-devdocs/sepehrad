@@ -1,26 +1,20 @@
-
 @import "tailwindcss";
 @theme {
-  --color-Background-light: #F7F6FF;
-  --color-Background-dark:#090357;
-  --color-Green-text:#3CBB16;
-  --color-Primary-dark:#0F7DC1;
- 
-    --color-veronika:#1D1A6A;
+  --color-Background-light: #f7f6ff;
+  --color-Background-dark: #090357;
+  --color-Green-text: #3cbb16;
+  --color-Primary-dark: #0f7dc1;
 
-  --color-Primary-super-light:#ecfeff;
-  --color-Primary-main:#2CA1EA;
-  --color-Primary-light:#D7EEFD;
-  --color-Red-background:#FF5959;
-  --color-Red-text:#D31A1A;
-        --font-vazirmatn:Vazirmatn, "Vazirmatn", "Vazirmatn"; 
-          --animate-fade-in-scale: fade-in-scale 0.7s ease-out;
-  --animate-fade-in: fade-in 1.3s ease-out; /* New animation */
+  --color-veronika: #1d1a6a;
 
-
-
-
-
+  --color-Primary-super-light: #ecfeff;
+  --color-Primary-main: #2ca1ea;
+  --color-Primary-light: #d7eefd;
+  --color-Red-background: #ff5959;
+  --color-Red-text: #d31a1a;
+  --font-vazirmatn: Vazirmatn, "Vazirmatn", "Vazirmatn";
+  --animate-fade-in-scale: fade-in-scale 0.7s ease-out;
+  --animate-fade-in: fade-in 1.5s ease-out; /* New animation */
 }
 @keyframes fade-in {
   0% {
@@ -30,19 +24,19 @@
     opacity: 1;
   }
 }
- @keyframes fade-in-scale {
-    0% {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
+@keyframes fade-in-scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
   }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 @font-face {
   font-family: "IranSans";
-  src: url("../public/fonts/IRANSansXV-v2.woff") ;
+  src: url("../public/fonts/IRANSansXV-v2.woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -50,5 +44,4 @@
 
 * {
   font-family: "IranSans", sans-serif; /* Fallback to sans-serif */
-
 }
