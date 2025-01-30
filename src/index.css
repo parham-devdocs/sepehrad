@@ -5,6 +5,9 @@
   --color-Background-dark:#090357;
   --color-Green-text:#3CBB16;
   --color-Primary-dark:#0F7DC1;
+ 
+    --color-veronika:#1D1A6A;
+
   --color-Primary-super-light:#ecfeff;
   --color-Primary-main:#2CA1EA;
   --color-Primary-light:#D7EEFD;
@@ -12,13 +15,21 @@
   --color-Red-text:#D31A1A;
         --font-vazirmatn:Vazirmatn, "Vazirmatn", "Vazirmatn"; 
           --animate-fade-in-scale: fade-in-scale 0.7s ease-out;
+  --animate-fade-in: fade-in 1.3s ease-out; /* New animation */
 
 
 
 
 
 }
-
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
  @keyframes fade-in-scale {
     0% {
       opacity: 0;

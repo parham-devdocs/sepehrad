@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,RefObject } from "react";
 import { userLoginType } from "../types";
-
-const LoginValidation = ({ usernameRef, passwordRef }) => {
+interface LoginValidationProps {
+  usernameRef: RefObject<HTMLInputElement>;
+  passwordRef: RefObject<HTMLInputElement>;
+}
+const LoginValidation = ({ usernameRef, passwordRef }:LoginValidationProps) => {
   const [errors, setErrors] = useState({ username: "", password: "" });
 
   function validateLogin(field: keyof userLoginType) {

@@ -20,6 +20,19 @@
   padding: 2rem;
   text-align: center;
 }
+/* Add this to your CSS file */
+.sublink-container {
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.sublink-open {
+  max-height: 500px; /* Set a maximum height that accommodates your content */
+}
+
+.sublink-closed {
+  max-height: 0;
+}
 
 .logo {
   height: 6em;

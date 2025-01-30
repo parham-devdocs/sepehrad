@@ -4,37 +4,46 @@ import Logo from "/SepehradLogo.png";
 import Input from "../components/input";
 import PrimaryButton from "../components/PrimaryButton";
 import { useMutation } from "react-query";
-import cookie from "js-cookie";
-import axiosInstance from "../lib/axios";
 import Spinner from "../components/spinner";
 import { userLoginType } from "../types";
 import useLoginValidation from "../hooks/loginValidation";
+import { useNavigate } from "react-router-dom";
+import { LoginAxios } from "../lib/LoginAxiox";
+const postData = async (data: userLoginType) => {
+  try {
 
-const postData = async (data:userLoginType) => {
-  const response = await axiosInstance.post("/login/", data);
-  return response.data;
+    const response= await LoginAxios(data)
+    
+    console.log(response); // Log the response data
+    return response; // Return the response data
+  } catch (error) {
+    console.error("Error posting data:", error); // Log the error
+    throw error; // Rethrow the error for further handling if needed
+  }
 };
 
+
+
+
 const Login = () => {
+  const navigate=useNavigate()
   const usernameRef = useRef<HTMLInputElement>(null); // Ref for the username input
   const passwordRef = useRef<HTMLInputElement>(null); // Ref for the password input
   // const [errors, setErrors] = useState<userLoginType>({ password: "", username: "" });
   const {validateLogin,errors,setErrors} = useLoginValidation({ usernameRef, passwordRef });
   const { mutate, isLoading } = useMutation(postData, {
     onSuccess: async (data: any) => {
-      const accessToken = await data.data.access;
-      const refreshToken = await data.data.refresh;
-
-      axiosInstance.defaults.headers.common[
-        "authorization"
-      ] = `Bearer ${accessToken}`;
-      cookie.set("accessToken", accessToken, { expires: 2 });
-      cookie.set("refreshToken", refreshToken, { expires: 7 });
-      console.log(cookie.get("accessToken"))
-
+   localStorage.setItem("username",data.data.user_info.username)
+    navigate("/")
     },
+
     onError: (error) => console.error("Error:", error),
   });
+
+  
+
+
+
   const handleInputChange = () => {
  
     validateLogin("password")

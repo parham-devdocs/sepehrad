@@ -14,6 +14,7 @@ import PaymentList from "./pages/dashboard/payment/paymentList";
 import CreateDebt from "./pages/dashboard/debt/createDebt";
 import EditDebt from "./pages/dashboard/debt/editDebt";
 import DebtList from "./pages/dashboard/debt/debtList";
+import ProtectedWrapper from "./components/protectedWrapper";
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
               <Route path="edit/:id" element={<EditDebt />} />
               <Route path="list" element={<DebtList />} />
             </Route>
+            <Route path="test" element={<ProtectedWrapper><span>1</span></ProtectedWrapper>}></Route>
           </Route>
         </Routes>
       </Router>{" "}
