@@ -1,80 +1,84 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/login",
-      "dest": "/login.tsx"
+      "source": "/login",
+      "destination": "/login.tsx"
     },
     {
-      "src": "/",
-      "dest": "/index"
+      "source": "/",
+      "destination": "/index"
     },
     {
-      "src": "/Bills",
-      "dest": "/Bills/index.tsx"
+      "source": "/Bills",
+      "destination": "/Bills/index.tsx"
     },
     {
-      "src": "/Bills/billManagement",
-      "dest": "/Bills/billManagement.tsx"
+      "source": "/Bills/billManagement",
+      "destination": "/Bills/billManagement.tsx"
     },
     {
-      "src": "/Bills/edit/:id",
-      "dest": "/Bills/editBill.tsx"
+      "source": "/Bills/edit/:id",
+      "destination": "/Bills/editBill.tsx"
     },
     {
-      "src": "/Bills/create",
-      "dest": "/Bills/createBill.tsx"
+      "source": "/Bills/create",
+      "destination": "/Bills/createBill.tsx"
     },
     {
-      "src": "/creditors",
-      "dest": "/creditors/index.tsx"
+      "source": "/creditors",
+      "destination": "/creditors/index.tsx"
     },
     {
-      "src": "/creditors/create",
-      "dest": "/creditors/createCreditor.tsx"
+      "source": "/creditors/create",
+      "destination": "/creditors/createCreditor.tsx"
     },
     {
-      "src": "/creditors/:id",
-      "dest": "/creditors/singleCreditors.tsx"
+      "source": "/creditors/:id",
+      "destination": "/creditors/singleCreditors.tsx"
     },
     {
-      "src": "/creditors/list",
-      "dest": "/creditors/creditorsList.tsx"
+      "source": "/creditors/list",
+      "destination": "/creditors/creditorsList.tsx"
     },
     {
-      "src": "/payment",
-      "dest": "/payment/index.tsx"
+      "source": "/payment",
+      "destination": "/payment/index.tsx"
     },
     {
-      "src": "/payment/create",
-      "dest": "/payment/createPayment.tsx"
+      "source": "/payment/create",
+      "destination": "/payment/createPayment.tsx"
     },
     {
-      "src": "/payment/edit/:id",
-      "dest": "/payment/editPayment.tsx"
+      "source": "/payment/edit/:id",
+      "destination": "/payment/editPayment.tsx"
     },
     {
-      "src": "/payment/list",
-      "dest": "/payment/paymentList.tsx"
+      "source": "/payment/list",
+      "destination": "/payment/paymentList.tsx"
     },
     {
-      "src": "/debt",
-      "dest": "/debt/index.tsx"
+      "source": "/debt",
+      "destination": "/debt/index.tsx"
     },
     {
-      "src": "/debt/create",
-      "dest": "/debt/createDebt.tsx"
+      "source": "/debt/create",
+      "destination": "/debt/createDebt.tsx"
     },
     {
-      "src": "/debt/edit/:id",
-      "dest": "/debt/editDebt.tsx"
+      "source": "/debt/edit/:id",
+      "destination": "/debt/editDebt.tsx"
     },
     {
-      "src": "/debt/list",
-      "dest": "/debt/debtList.tsx"
+      "source": "/debt/list",
+      "destination": "/debt/debtList.tsx"
     },
     {
-      "src": "/test",
-      "dest": "/test.tsx"
+      "source": "/test",
+      "destination": "/test.tsx"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }
