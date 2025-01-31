@@ -9,7 +9,7 @@ const Header = ({ header, buttonText, buttonIcon, path }: HeaderType) => {
           {buttonText}
         </PrimaryButton>
       </NavLink>{" "}
-      <h1 className=" text-[33px] font-[700]">{header}</h1>
+      <h1 className=" text-[18px] md:text-[25px] lg:text[33px] font-[700]">{header}</h1>
     </div>
   );
 };

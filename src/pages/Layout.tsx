@@ -7,7 +7,7 @@ const Layout = () => {
     <div className="flex min-h-[90vh] overflow-x-hidden">
       <div className="flex-1">
         <Navbar />
-        <main className=" mt-8  py-8  px-10">
+        <main className=" mt-8  py-8  px-10 w-full">
           <Outlet /> {/* Renders the matched child route */}
         </main>
       </div>

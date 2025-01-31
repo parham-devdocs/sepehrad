@@ -16,29 +16,25 @@ const actionColumn = {
   cell: ({ row }: { row: any }) => (
     <div className="flex justify-center space-x-2">
       <IconButton
-        className=" border-Red-text  hover:scale-105 transition-all duration-300"
+        className="border-Red-text hover:scale-105 transition-all duration-300"
         onClick={() => console.log("delete")}
-        icon={<ImBin className=" text-Red-text" />}
-      ></IconButton>
+        icon={<ImBin className="text-Red-text" />}
+      />
       <IconButton
-        className=" border-Primary-dark hover:scale-105 transition-all duration-300"
+        className="border-Primary-dark hover:scale-105 transition-all duration-300"
         onClick={() => console.log("edit")}
-        icon={<AiOutlineEdit size={25} className=" text-Primary-dark " />}
-      ></IconButton>
+        icon={<AiOutlineEdit size={25} className="text-Primary-dark" />}
+      />
     </div>
   ),
 };
+
 const viewButtons = {
   cell: ({ row, text, path }: { row: any; text: string; path: string }) => {
-    console.log(row.row.id);
     return (
-      // Use return statement
       <div className="flex justify-center flex-col items-center gap-3 space-x-2">
-        <p>{row.getValue("status")}</p> {/* Access the status value */}
-        <NavLink
-          className=" text-Primary-dark text-[15px]"
-          to={`/${path}/`}
-        >
+        <p>{row.getValue("status")}</p>
+        <NavLink className="text-Primary-dark text-[15px]" to={`/${path}/`}>
           {text}
         </NavLink>
       </div>
@@ -49,7 +45,7 @@ const viewButtons = {
 const columns = [
   columnHelper.accessor("actions", {
     header: () => "",
-    cell: actionColumn.cell, // Directly use the cell function
+    cell: actionColumn.cell,
   }),
   columnHelper.accessor("balance", {
     header: "مقدار مانده",
@@ -61,7 +57,7 @@ const columns = [
         row: info.cell,
         text: "مشاهده لیست پرداخت ها",
         path: "payment/list",
-      }), // Pass the row from info
+      }),
   }),
   columnHelper.accessor("total_debt", {
     header: () => "مجموع بدهی",
@@ -70,7 +66,7 @@ const columns = [
         row: info.cell,
         text: " مشاهده لیست بدهی ها",
         path: "dept/list",
-      }), // Pass the row from info,
+      }),
   }),
   columnHelper.accessor("phone_number", {
     header: () => "شماره تماس",
@@ -127,15 +123,20 @@ const credits: Credit[] = [
 
 const CreditorsList = () => {
   return (
-    <div className="space-y-10">
+    <div className="lg:space-y-10 space-y-5 ">
+      {" "}
+      {/* Added padding on the sides */}
       <Header
         header="لیست بستانکاران"
         buttonIcon={<FaPlus />}
         buttonText="افزودن بستانکار"
         path="/creditors/create"
       />
-      <div className=" "></div>
-      <Table rows={credits} columns={columns} />
+      <div className="overflow-hidden">
+        {" "}
+        {/* Optional: wrap for overflow handling */}
+        <Table rows={credits} columns={columns} />
+      </div>
     </div>
   );
 };

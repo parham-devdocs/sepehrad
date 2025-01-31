@@ -79,7 +79,7 @@ const Sidebar = () => {
     <div
       className={`${
         sidebarIsOpen ? "w-[240px]" : "w-[80px]"
-      } h-screen pt-12 px-6 bg-Background-dark transition-all duration-500 flex justify-center overflow-hidden`}
+      } min-h-screen pt-12 px-6 bg-Background-dark transition-all duration-500 flex justify-center overflow-hidden`}
     >
       <div
         className={`space-y-4  ${

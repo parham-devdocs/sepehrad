@@ -19,3 +19,13 @@ export type Credit = {
   status: string;
   balance: string;
 };
+
+export type Debt = {
+  id: number;
+  name: string | "";
+  amount: string;
+  for: string;
+  date: string; // Changed to Date type
+  deadline: Date; // Changed to Date type
+};
+

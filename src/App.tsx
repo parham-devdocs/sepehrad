@@ -11,9 +11,9 @@ import CreditorList from "./pages/dashboard/creditors/creditorsList";
 import CreatePayment from "./pages/dashboard/payment/createPayment";
 import EditPayment from "./pages/dashboard/payment/editPayment";
 import PaymentList from "./pages/dashboard/payment/paymentList";
-import CreateDebt from "./pages/dashboard/debt/createDebt";
+import CreateDebt from "./pages/dashboard/debt/create";
 import EditDebt from "./pages/dashboard/debt/editDebt";
-import DebtList from "./pages/dashboard/debt/debtList";
+import DebtList from "./pages/dashboard/debt/list";
 import ProtectedWrapper from "./components/protectedWrapper";
 import NotFound from "./components/notFound";
 

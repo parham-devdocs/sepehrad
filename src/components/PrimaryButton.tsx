@@ -19,7 +19,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
     <button
       className={`text-Primary-light  ${
         icon && "h-[50px]"
-      } flex items-center gap-2 font-(--iranSans) bg-Primary-dark py-3 px-8 text-${align} rounded-[16px] cursor-pointer hover:bg-blue-400 transition-colors duration-300 checked:animate-ping  `}
+      } flex items-center gap-2 font-(--iranSans) bg-Primary-dark lg:py-3 px-3  lg:px-8 text-${align} rounded-[16px] cursor-pointer hover:bg-blue-400 transition-colors duration-300 checked:animate-ping  `}
       onClick={onClick}
     >
       {children} {/* Use children here */}
