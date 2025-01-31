@@ -4,6 +4,7 @@ import Bell from "../../public/icons/bell.png";
 import Search from "../../public/icons/prime_search.png";
 import Moon from "../../public/icons/solar_moon-line-duotone.png";
 import Logo from "../../public/NavbarLogo.png";
+
 const Navbar = () => {
   const [username, setUsername] = useState<string | null>();
   useEffect(

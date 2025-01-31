@@ -11,3 +11,11 @@ export type HeaderType = {
   buttonIcon: ReactNode;
   path: string;
 };
+export type Credit = {
+  id: number;
+  name: string | "";
+  phone_number: string;
+  total_debt: string;
+  status: string;
+  balance: string;
+};
