@@ -1,17 +1,21 @@
-// Layout.js
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router";
 import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
+
 const Layout = () => {
   return (
-    <div className="flex min-h-[90vh] overflow-x-hidden">
-      <div className="flex-1">
+    <div className="flex h-screen overflow-hidden">
+      
+      <div className="flex-1 flex flex-col overflow-y-auto">
         <Navbar />
-        <main className=" mt-8  py-8  px-10 w-full">
-          <Outlet /> {/* Renders the matched child route */}
+
+        <main className="flex-1 p-4 overflow-y-auto">
+          <Outlet />
         </main>
       </div>
-      <Sidebar /> {/* Adjust width as needed */}
+      <div className=" flex-shrink-0">
+        <Sidebar />
+      </div>
     </div>
   );
 };

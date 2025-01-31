@@ -67,9 +67,9 @@ const Sidebar = () => {
 
   const toggleSidebar = () => {
     if (!mobileMode) {
-     return setSidebarIsOpen((prev)=>!prev);
+      return setSidebarIsOpen((prev) => !prev);
     }
-    setSidebarIsOpen(false)
+    setSidebarIsOpen(false);
   };
   useEffect(() => {
     setSidebarIsOpen((prev) => !prev);
@@ -79,7 +79,7 @@ const Sidebar = () => {
     <div
       className={`${
         sidebarIsOpen ? "w-[240px]" : "w-[80px]"
-      } min-h-screen pt-12 px-6 bg-Background-dark transition-all duration-500 flex justify-center overflow-hidden`}
+      } min-h-screen pt-12 px-6 bg-Background-dark transition-all duration-500 flex justify-center shrink-0 overflow-hidden`}
     >
       <div
         className={`space-y-4  ${
@@ -128,7 +128,9 @@ function SidebarLink({
           sidebarIsOpen ? "justify-end" : "justify-end"
         } flex items-center justify-between  max-h-10 animate-fade-in space-x-3 w-full px-4 text-[14px] py-2 bg-veronika text-Primary-main rounded-[8px] hover:bg-Primary-main hover:text-veronika transition-all duration-900`}
       >
-        { link.text === "امور مالی" && <Arrow direction={toggleFinance ? "up":"down"} />}
+        {link.text === "امور مالی" && (
+          <Arrow direction={toggleFinance ? "up" : "down"} />
+        )}
         <div className=" flex gap-3 ">
           {sidebarIsOpen && (
             <p className="animate-fade-in transition-colors">{link.text}</p>
@@ -157,13 +159,11 @@ function SidebarLink({
   );
 }
 
-
-function Arrow({direction}:{direction:string}) {
+function Arrow({ direction }: { direction: string }) {
   // const [text,setTex]=useState<string>("")
-  
-if (direction === "up") {
- return <IoIosArrowUp className=" mr-16 animate-fade-in"/>
 
-}
-  return <IoIosArrowDown className=" mr-16 animate-fade-in"/>
+  if (direction === "up") {
+    return <IoIosArrowUp className=" mr-16 animate-fade-in" />;
+  }
+  return <IoIosArrowDown className=" mr-16 animate-fade-in" />;
 }

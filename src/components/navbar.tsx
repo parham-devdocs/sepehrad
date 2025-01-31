@@ -7,14 +7,11 @@ import Logo from "../../public/NavbarLogo.png";
 
 const Navbar = () => {
   const [username, setUsername] = useState<string | null>();
-  useEffect(
-    () => {
-      setUsername(localStorage.getItem("username"));
-    },
-    [ username ]
-  );
+  useEffect(() => {
+    setUsername(localStorage.getItem("username"));
+  }, [username]);
   return (
-    <div className=" flex justify-between py-6 px-5 bg-transparent w-full  ">
+    <div className=" flex justify-between py-6 px-5 bg-transparent   ">
       <div className=" flex gap-4">
         <IconButton
           className=" border-Background-dark bg-Primary-super-light"
