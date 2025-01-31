@@ -18,6 +18,7 @@ export type Credit = {
   total_debt: string;
   status: string;
   balance: string;
+  actions:string
 };
 
 export type Debt = {
@@ -27,5 +28,6 @@ export type Debt = {
   for: string;
   date: string; // Changed to Date type
   deadline: string; // Changed to Date type
+  actions:string
 };
 

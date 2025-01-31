@@ -7,7 +7,7 @@ import EditBill from "./pages/dashboard/bills/editBill";
 import CreateBill from "./pages/dashboard/bills/createBill";
 import CreateCreditor from "./pages/dashboard/creditors/create";
 import SingleCreditor from "./pages/dashboard/creditors/singleCreditor";
-import CreditorList from "./pages/dashboard/creditors/creditorsList";
+import CreditorList from "./pages/dashboard/creditors/list";
 import CreatePayment from "./pages/dashboard/payment/createPayment";
 import EditPayment from "./pages/dashboard/payment/editPayment";
 import PaymentList from "./pages/dashboard/payment/paymentList";

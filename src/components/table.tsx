@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
@@ -12,7 +11,7 @@ const Table = ({
   rows,
 }: {
   columns: any;
-  rows: Credit[] | Debt[];
+  rows: Omit<Credit, "actions">[] | Omit<Debt, "actions">[];
 }) => {
   const [data, _setData] = React.useState([...rows]);
 

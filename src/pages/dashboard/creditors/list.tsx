@@ -1,7 +1,7 @@
 import Header from "../../../components/header";
 import { FaPlus } from "react-icons/fa6";
 import Table from "../../../components/table";
-import { CellContext, createColumnHelper } from "@tanstack/react-table";
+import {  createColumnHelper } from "@tanstack/react-table";
 import { Credit } from "../../../types";
 import IconButton from "../../../components/iconButton";
 import { ImBin } from "react-icons/im";
@@ -13,7 +13,7 @@ const columnHelper = createColumnHelper<Credit>();
 const actionColumn = {
   id: "actions",
   header: "Actions",
-  cell: ({ row }: { row: any }) => (
+  cell: () => (
     <div className="flex justify-center space-x-2">
       <IconButton
         className="border-Red-text hover:scale-105 transition-all duration-300"
@@ -78,7 +78,7 @@ const columns = [
   }),
 ];
 
-const credits: Credit[] = [
+const credits: Omit<Credit,"actions">[] = [
   {
     id: 1,
     name: "جان دو",
@@ -109,7 +109,7 @@ const credits: Credit[] = [
     phone_number: "444-444-4444",
     total_debt: "150",
     status: "پرداخت شده",
-    balance: "75.5",
+    balance: "75.5"
   },
   {
     id: 5,

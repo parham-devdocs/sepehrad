@@ -1,19 +1,18 @@
 import Header from "../../../components/header";
 import { FaPlus } from "react-icons/fa6";
 import Table from "../../../components/table";
-import { CellContext, createColumnHelper } from "@tanstack/react-table";
-import { Credit, Debt } from "../../../types";
+import {  createColumnHelper } from "@tanstack/react-table";
+import {  Debt } from "../../../types";
 import IconButton from "../../../components/iconButton";
 import { ImBin } from "react-icons/im";
 import { AiOutlineEdit } from "react-icons/ai";
-import { NavLink } from "react-router";
 
 const columnHelper = createColumnHelper<Debt>();
 
 const actionColumn = {
   id: "actions",
   header: "Actions",
-  cell: ({ row }: { row: any }) => (
+  cell: () => (
     <div className="flex justify-center space-x-2">
       <IconButton
         className="border-Red-text hover:scale-105 transition-all duration-300"
@@ -54,7 +53,7 @@ const columns = [
   }),
 ];
 
-const debts: Debt[] = [
+const debts:Omit<Debt,"actions">[]  = [
   {
     id: 1,
     name: "جان دو",
