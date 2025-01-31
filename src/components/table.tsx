@@ -22,8 +22,8 @@ const Table = ({
   });
 
   return (
-    <div className="border-Primary-dark border-2 rounded-2xl overflow-x-scroll overflow-y-auto max-h-[500px]  ">
-      <table className="min-w-[600px] w-full rounded-2xl overflow-x-scroll ">
+    <div className="border-Primary-dark border-2 rounded-2xl overflow-x-auto overflow-y-auto max-h-[500px]  ">
+      <table className="min-w-[600px] w-full rounded-2xl overflow-x-auto ">
         <thead className="bg-Primary-light border-b-2 border-Primary-dark">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
