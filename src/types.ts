@@ -26,6 +26,6 @@ export type Debt = {
   amount: string;
   for: string;
   date: string; // Changed to Date type
-  deadline: Date; // Changed to Date type
+  deadline: string; // Changed to Date type
 };
 
