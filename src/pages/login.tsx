@@ -75,7 +75,7 @@ const Login = () => {
 
   return (
     <form
-      className="w-screen h-screen bg-Background-dark flex justify-center items-center overflow-hidden"
+      className=" bg-Background-dark flex justify-center items-center"
       onSubmit={formSubmit}
     >
       <div className="lg:my-16 lg:mx-20 my-8 mx-4 border-Background-light border-[2px] rounded-[32px] flex gap-12 animate-fade-in-scale">
@@ -88,7 +88,7 @@ const Login = () => {
             <p className="text-Primary-light text-[48px] text-right w-full kirekharfont mb-3">
               ورود
             </p>
-            <div className="space-y-2 w-full h-24">
+            <div className="space-y-2 w-full h-24 px-4">
               <Input
                 ref={usernameRef}
                 placeholder="نام کاربری"
@@ -101,7 +101,7 @@ const Login = () => {
               )}
             </div>
             {/* Display username error */}
-            <div className="space-y-2 w-full h-24">
+            <div className="space-y-2 w-full h-24 px-4">
               <Input
                 ref={passwordRef}
                 type="password"
