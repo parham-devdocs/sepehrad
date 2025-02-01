@@ -31,3 +31,13 @@ export type Debt = {
   actions:string
 };
 
+
+
+export type Payment = {
+  id: number;
+  name: string | "";
+  amount: string;
+  type: string;
+  date: string; // Changed to Date type
+  actions:string
+}

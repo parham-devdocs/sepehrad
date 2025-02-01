@@ -9,7 +9,7 @@ const Layout = () => {
       <div className="flex-1 flex flex-col overflow-y-auto rounded-tr-[50px] bg-Background-light">
         <Navbar />
 
-        <main className="flex-1 p-4 overflow-y-auto">
+        <main className="flex-1 p-4 overflow-y-auto mx-10">
           <Outlet />
         </main>
       </div>

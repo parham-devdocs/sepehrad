@@ -4,14 +4,15 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { Credit, Debt } from "../types";
+import { Credit, Debt, Payment } from "../types";
+
 
 const Table = ({
   columns,
   rows,
 }: {
   columns: any;
-  rows: Omit<Credit, "actions">[] | Omit<Debt, "actions">[];
+  rows: Omit<Credit, "actions">[] | Omit<Debt, "actions">[] |Omit<Payment,"actions">[];
 }) => {
   const [data, _setData] = React.useState([...rows]);
 
