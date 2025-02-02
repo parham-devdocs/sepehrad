@@ -12,6 +12,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { ReactNode, useEffect, useState } from "react";
 import useSidebarToggle from "../hooks/useSidebarToggle";
+import { FiLogOut } from "react-icons/fi";
 
 type DashboardLinkType = {
   text: string;
@@ -76,10 +77,11 @@ const Sidebar = () => {
   }, [mobileMode]);
 
   return (
+    
     <div
       className={`${
         sidebarIsOpen ? "w-[240px]" : "w-[80px]"
-      } min-h-screen pt-12 px-6 bg-Background-dark transition-all duration-500 flex justify-center shrink-0 overflow-hidden`}
+      } pb-5 min-h-screen pt-12 px-6 bg-Background-dark transition-all duration-500 flex flex-col items-center justify-between shrink-0 overflow-hidden`}
     >
       <div
         className={`space-y-4  ${
@@ -98,6 +100,17 @@ const Sidebar = () => {
           />
         ))}
       </div>
+      
+      <button className="flex cursor-pointer   max-h-10 animate-fade-in space-x-3 w-full px-6 text-[14px] py-2 bg-Red-Background text-Red-text rounded-[8px] hover:bg-Primary-main hover:text-veronika transition-all duration-900">
+  <div className={`flex w-full items-center ${sidebarIsOpen ? 'justify-between' : 'justify-center'}`}>
+    <FiLogOut className="shrink-0" />
+    {sidebarIsOpen && (
+      <p className="animate-fade-in transition-colors">خروج</p>
+    )}
+  </div>
+</button>
+
+
     </div>
   );
 };
@@ -120,7 +133,7 @@ function SidebarLink({
   }
 
   return (
-    <div>
+    <div >
       <NavLink
         onClick={() => financeToggleHandler(link.text)}
         to={link.link ? link.link : "#"}
