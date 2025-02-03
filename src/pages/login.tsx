@@ -140,7 +140,7 @@ const Login = () => {
             </div>
             <div className="w-full">
               <PrimaryButton align="center" >
-                 {isLoading ? <Spinner size={24}/> :"تایید"}
+                 {isLoading ? <Spinner size={24} color="border-Background-light"/>: "تایید"}
               </PrimaryButton>
             </div>
           </div>

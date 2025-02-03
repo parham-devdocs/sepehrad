@@ -9,6 +9,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { dataFetcher } from "../../../lib/Axios";
+import Spinner from "../../../components/spinner";
 
 const columnHelper = createColumnHelper<Credit>();
 
@@ -83,66 +84,29 @@ const columns = [
   }),
 ];
 
-const credits: Omit<Credit,"actions">[] = [
-  {
-    id: 1,
-    name: "جان دو",
-    phone_number: "123-456-7890",
-    total_debt: "20%",
-    status: "پرداخت شده",
-    balance: "150.25",
-  },
-  {
-    id: 2,
-    name: "آلیس اسمیت",
-    phone_number: "987-654-3210",
-    total_debt: "100",
-    status: "در حال انجام",
-    balance: "50.75",
-  },
-  {
-    id: 3,
-    name: "باب جانسون",
-    phone_number: "555-555-5555",
-    total_debt: "300",
-    status: "معوقه",
-    balance: "0.0",
-  },
-  {
-    id: 4,
-    name: "مری ویلیامز",
-    phone_number: "444-444-4444",
-    total_debt: "150",
-    status: "پرداخت شده",
-    balance: "75.5"
-  },
-  {
-    id: 5,
-    name: "جیمز براون",
-    phone_number: "333-333-3333",
-    total_debt: "250",
-    status: "در حال انجام",
-    balance: "25.0",
-  },
-];
 
 const CreditorsList = () => {
   const [data, setData] = useState<Omit<Credit, "actions">[]>([]);
+  const [isLoading,setIsLoading]=useState<Boolean>(false)
   const navigate=useNavigate()
   useEffect(()=>{
     const creditorsList=async()=>{
-
-const list:Promise<[]> =await  dataFetcher("https://sepehradmanage.runflare.run/api/creditors/creditors-list/") 
+setIsLoading(true)
+const list=await  dataFetcher("https://sepehradmanage.runflare.run/api/creditors/creditors-list/") as { data:Omit<Credit, "actions">[]} 
 !list && navigate("/login")
-setData(list)
+setData(list.data)
 console.log(list)
+
+setIsLoading(false)
     }
     creditorsList()
   
 
   },[])
-  return (
-    <div className="lg:space-y-10 space-y-5 ">
+return isLoading ? <div className=" flex justify-center items-center w-full h-full">
+   <Spinner color="border-Primary-main" size={96}/> 
+</div> :  (
+    <div className="lg:space-y-10 space-y-5">
       {" "}
       {/* Added padding on the sides */}
       <Header
@@ -154,10 +118,10 @@ console.log(list)
       <div className="overflow-hidden">
         {" "}
         {/* Optional: wrap for overflow handling */}
-        <Table rows={credits} columns={columns} />
+        <Table rows={data} columns={columns} />
       </div>
     </div>
-  );
+      );
 };
 
 export default CreditorsList;
