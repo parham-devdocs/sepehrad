@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { userLoginType } from "../types";
 import useLoginValidation from "../hooks/loginValidation";
 import { data, useNavigate } from "react-router-dom";
-import { LoginAxios } from "../lib/LoginAxios";
+import { LoginAxios } from "../lib/Axios";
 
 const postData = async (data: userLoginType) => {
 

@@ -6,9 +6,14 @@ import { Credit } from "../../../types";
 import IconButton from "../../../components/iconButton";
 import { ImBin } from "react-icons/im";
 import { AiOutlineEdit } from "react-icons/ai";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { dataFetcher } from "../../../lib/Axios";
 
 const columnHelper = createColumnHelper<Credit>();
+
+
+
 
 const actionColumn = {
   id: "actions",
@@ -47,10 +52,10 @@ const columns = [
     header: () => "",
     cell: actionColumn.cell,
   }),
-  columnHelper.accessor("balance", {
+  columnHelper.accessor("remaining_debt", {
     header: "مقدار مانده",
   }),
-  columnHelper.accessor("status", {
+  columnHelper.accessor("paid_debt", {
     header: () => "وضعیت پرداخت",
     cell: (info) =>
       viewButtons.cell({
@@ -122,6 +127,20 @@ const credits: Omit<Credit,"actions">[] = [
 ];
 
 const CreditorsList = () => {
+  const [data, setData] = useState<Omit<Credit, "actions">[]>([]);
+  const navigate=useNavigate()
+  useEffect(()=>{
+    const creditorsList=async()=>{
+
+const list:Promise<[]> =await  dataFetcher("https://sepehradmanage.runflare.run/api/creditors/creditors-list/") 
+!list && navigate("/login")
+setData(list)
+console.log(list)
+    }
+    creditorsList()
+  
+
+  },[])
   return (
     <div className="lg:space-y-10 space-y-5 ">
       {" "}

@@ -12,12 +12,12 @@ export type HeaderType = {
   path: string;
 };
 export type Credit = {
-  id: number;
-  name: string | "";
+  id: string;
+  name: string;
   phone_number: string;
   total_debt: string;
-  status: string;
-  balance: string;
+  paid_debt: string;
+  remaining_debt: string;
   actions:string
 };
 
