@@ -1,5 +1,5 @@
 import Logo from "/SepehradLogo.png"; // Keep the logo import as is
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { BsCurrencyExchange } from "react-icons/bs";
 import { LiaClipboardListSolid } from "react-icons/lia";
@@ -65,7 +65,11 @@ const dashboardLinks: DashboardLinkType[] = [
 const Sidebar = () => {
   const { mobileMode } = useSidebarToggle();
   const [sidebarIsOpen, setSidebarIsOpen] = useState(!mobileMode); // Start closed in mobile mode
-
+  const navigate=useNavigate()
+const logOutHandler=()=>{
+localStorage.clear()
+navigate("/login")
+}
   const toggleSidebar = () => {
     if (!mobileMode) {
       return setSidebarIsOpen((prev) => !prev);
@@ -101,7 +105,7 @@ const Sidebar = () => {
         ))}
       </div>
       
-      <button className="flex cursor-pointer   max-h-10 animate-fade-in space-x-3 w-full px-6 text-[14px] py-2 bg-Red-Background text-Red-text rounded-[8px] hover:bg-Primary-main hover:text-veronika transition-all duration-900">
+      <button onClick={logOutHandler} className="flex cursor-pointer   max-h-10 animate-fade-in space-x-3 w-full px-6 text-[14px] py-2 bg-Red-Background text-Red-text rounded-[8px] hover:bg-Primary-main hover:text-veronika transition-all duration-900">
   <div className={`flex w-full items-center ${sidebarIsOpen ? 'justify-between' : 'justify-center'}`}>
     <FiLogOut className="shrink-0" />
     {sidebarIsOpen && (

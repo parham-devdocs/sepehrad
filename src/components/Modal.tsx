@@ -24,7 +24,7 @@ export const Modal: FC<ModalTypes> = ({ url, text }) => {
   }
 
   return (
-    <div className="lg:w-fit lg:h-fit mx-8 w-full h-1/2 px-8 py-8 animate-fade-in bg-Primary-super-light shadow-md rounded-[12px] flex flex-col gap-8 items-center">
+    <div className="lg:w-fit lg:h-fit mx-8 w-full h-1/2 px-8  animate-fade-in bg-Primary-super-light shadow-md rounded-[12px] flex flex-col gap-8 items-center">
       <img src={AlertSign} alt="alert logo" className="mt-6" />
       <p className="font-[900] text-[20px] whitespace-nowrap">{text}</p>
       <div className="flex justify-between items-center w-full">
