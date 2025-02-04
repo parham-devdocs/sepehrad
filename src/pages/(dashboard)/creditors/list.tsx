@@ -41,7 +41,14 @@ const actionColumn = {
       />
       <IconButton
         className="border-Primary-dark hover:scale-105 transition-all duration-300"
-        onClick={() => console.log("edit")}
+        onClick={async() => 
+         { 
+          const formattedId=id+1
+          setUrl(`https://sepehradmanage.runflare.run/api/creditors/update-creditor/${formattedId}`)
+          setText("آیا از ویرایش ایم مورد اطمینان دارید؟")
+          setData(data.filter(item => Number(item.id) !== formattedId));
+                   openModal()}
+        }
         icon={<AiOutlineEdit size={25} className="text-Primary-dark" />}
       />
     </div>
