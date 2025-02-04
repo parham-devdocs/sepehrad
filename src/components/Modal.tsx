@@ -29,13 +29,13 @@ export const Modal: FC<ModalTypes> = ({ url, text }) => {
       <p className="font-[900] text-[20px] whitespace-nowrap">{text}</p>
       <div className="flex justify-between items-center w-full">
         <button
-          className="px-4 py-2 bg-transparent border-[2px] rounded-[10px] border-Primary-main text-Primary-main font-[600]"
+          className="px-4 py-2 bg-transparent border-[2px] rounded-[10px] border-Primary-main text-Primary-main font-[600] cursor-pointer hover:scale-105 transition-all duration-300"
           onClick={() => closeModal()}
         >
           انصراف
         </button>
         <button
-          className="px-4 py-2 bg-Red-Background border-[2px] rounded-[10px] border-Red-text text-Red-text font-[600]"
+          className="px-4 py-2 bg-Red-Background border-[2px] rounded-[10px] border-Red-text text-Red-text font-[600] cursor-pointer hover:scale-105 transition-all duration-300"
           onClick={deleteItem}
         >
           {text === "آیا از حذف این مورد اطمینان دارید؟"

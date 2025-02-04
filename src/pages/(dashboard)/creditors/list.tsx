@@ -22,7 +22,7 @@ const CreditorsList = () => {
   const [data, setData] = useState<Omit<Credit, "actions">[]>([]);
   const [isLoading,setIsLoading]=useState<Boolean>(false)
   const navigate=useNavigate()
-const {isOpen,openModal,setText,setUrl,url}=useModalToggle()
+const {openModal,setText,setUrl}=useModalToggle()
 const actionColumn = {
   id: "actions",
   header: "Actions",

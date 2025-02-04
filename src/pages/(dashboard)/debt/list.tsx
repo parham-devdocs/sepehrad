@@ -10,22 +10,43 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { dataFetcher, deleteData } from "../../../lib/Axios";
 import Spinner from "../../../components/spinner";
-
+import useModalToggle from "../../../modalStateStore";
 const columnHelper = createColumnHelper<Debt>();
+
+ 
+
+const DebtList = () => {
+  const [data, setData] = useState<Omit<Debt, "actions">[]>([]);
+  const [isLoading,setIsLoading]=useState<Boolean>(false)
+  const navigate=useNavigate()
+  const {openModal,setText,setUrl}=useModalToggle()
 
 const actionColumn = {
   id: "actions",
   header: "Actions",
-  cell: (id) => (
+  cell: (id:number) => (
     <div className="flex justify-center space-x-2">
       <IconButton
         className="border-Red-text hover:scale-105 transition-all duration-300"
-        onClick={() => console.log(  id)}
+        onClick={ async() =>{ 
+        const formattedId=id+1
+          setUrl(`https://sepehradmanage.runflare.run/api/creditors/delete-creditor/${formattedId}`)
+          setText("آیا از حذف این مورد اطمینان دارید؟")
+          setData(data.filter(item => Number(item.id) !== formattedId));
+                   openModal()
+        }}
         icon={<ImBin className="text-Red-text" />}
       />
       <IconButton
         className="border-Primary-dark hover:scale-105 transition-all duration-300"
-        onClick={() => console.log(id)}
+        onClick={async() => 
+         { 
+          const formattedId=id+1
+          setUrl(`https://sepehradmanage.runflare.run/api/creditors/update-creditor/${formattedId}`)
+          setText("آیا از ویرایش ایم مورد اطمینان دارید؟")
+          setData(data.filter(item => Number(item.id) !== formattedId));
+                   openModal()}
+        }
         icon={<AiOutlineEdit size={25} className="text-Primary-dark" />}
       />
     </div>
@@ -57,12 +78,6 @@ const columns = [
   }),
 ];
 
- 
-
-const DebtList = () => {
-  const [data, setData] = useState<Omit<Debt, "actions">[]>([]);
-  const [isLoading,setIsLoading]=useState<Boolean>(false)
-  const navigate=useNavigate()
   useEffect(()=>{
     const creditorsList=async()=>{
 setIsLoading(true)
