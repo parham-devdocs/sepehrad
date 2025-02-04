@@ -8,7 +8,7 @@ import { ImBin } from "react-icons/im";
 import { AiOutlineEdit } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
-import { dataFetcher, deleteData } from "../../../lib/Axios";
+import { dataFetcher } from "../../../lib/Axios";
 import useModalToggle from "../../../modalStateStore";
 import Spinner from "../../../components/spinner";
 
@@ -22,22 +22,20 @@ const CreditorsList = () => {
   const [data, setData] = useState<Omit<Credit, "actions">[]>([]);
   const [isLoading,setIsLoading]=useState<Boolean>(false)
   const navigate=useNavigate()
-const {isOpen,openModal}=useModalToggle()
+const {isOpen,openModal,setText,setUrl,url}=useModalToggle()
 const actionColumn = {
   id: "actions",
   header: "Actions",
-  cell: (id) => (
+  cell: (id:number) => (
     <div className="flex justify-center space-x-2">
       <IconButton
         className="border-Red-text hover:scale-105 transition-all duration-300"
         onClick={ async() =>{ 
-          // const deletedData=await deleteData(`https://sepehradmanage.runflare.run/api/creditors/delete-creditor/${id}`)
-          // if (!deletedData) {
-            
-          // }
-          // }}
-         openModal()
-          console.log(isOpen)
+        const formattedId=id+1
+          setUrl(`https://sepehradmanage.runflare.run/api/creditors/delete-creditor/${formattedId}`)
+          setText("آیا از حذف این مورد اطمینان دارید؟")
+          setData(data.filter(item => Number(item.id) !== formattedId));
+                   openModal()
         }}
         icon={<ImBin className="text-Red-text" />}
       />
