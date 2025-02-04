@@ -23,12 +23,13 @@ export type Credit = {
 
 export type Debt = {
   id: number;
-  name: string | "";
-  amount: string;
-  for: string;
-  date: string; // Changed to Date type
-  deadline: string; // Changed to Date type
-  actions:string
+  creditor: string;
+  amount: string; // Consider using a number type if appropriate
+  description: string;
+  date: string; // You might want to use Date type if you're handling dates
+  factor_image: string;
+  payment_until: string; // Same as above for date handling
+  is_paid: boolean;
 };
 
 

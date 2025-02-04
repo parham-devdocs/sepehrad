@@ -104,4 +104,62 @@ console.log(retryResponse.status)
 }
 
 
+export async function deleteData(url:string) {
+  let accessToken = Cookie.get("access") as string
+  let refreshToken = Cookie.get("refresh") as string
 
+  try {
+    // First attempt to fetch the creditors list
+    let response = await axios.delete(url, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Accept': 'application/json'
+      }
+    });
+
+    // If the response is successful, return the data
+    return response.data;
+
+  } catch (error:any) {
+    // Check if the error is due to an unauthorized access (401)
+    if (error.response && error.response.status === 401) {
+      try {
+        // Attempt to refresh the access token
+        const refreshResponse = await axios.post(
+          "https://sepehradmanage.runflare.run/accounts/api/token/refresh/",
+          {
+          
+            refresh: refreshToken
+          },
+          {
+            headers: {
+              'Accept': 'application/json'
+            }
+          }
+        );
+        
+        // Update the access token
+        accessToken = refreshResponse.data as string // Assuming the new token is in 'access'
+        Cookie.set("access", accessToken); // Update cookie if necessary
+        // Retry fetching the creditors list with the new access token
+        const retryResponse = await axios.delete(url, {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Accept': 'application/json'
+          }
+        });
+console.log(retryResponse.status)
+        return retryResponse.data; // Return the data from the retry
+
+      } catch (refreshError) {
+        console.error("Error refreshing token:", refreshError);
+        localStorage.clear(); // Clear local storage on failure
+        console.log("Logout"); // Log out the user
+        return false; // Return false to indicate failure
+      }
+    } else {
+      console.error("Error fetching creditors list:", error);
+      return false; // Return false for other errors
+    }
+  }
+}

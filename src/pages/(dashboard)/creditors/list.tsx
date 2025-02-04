@@ -8,7 +8,8 @@ import { ImBin } from "react-icons/im";
 import { AiOutlineEdit } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
-import { dataFetcher } from "../../../lib/Axios";
+import { dataFetcher, deleteData } from "../../../lib/Axios";
+import useModalToggle from "../../../modalStateStore";
 import Spinner from "../../../components/spinner";
 
 const columnHelper = createColumnHelper<Credit>();
@@ -16,14 +17,28 @@ const columnHelper = createColumnHelper<Credit>();
 
 
 
+
+const CreditorsList = () => {
+  const [data, setData] = useState<Omit<Credit, "actions">[]>([]);
+  const [isLoading,setIsLoading]=useState<Boolean>(false)
+  const navigate=useNavigate()
+const {isOpen,openModal}=useModalToggle()
 const actionColumn = {
   id: "actions",
   header: "Actions",
-  cell: () => (
+  cell: (id) => (
     <div className="flex justify-center space-x-2">
       <IconButton
         className="border-Red-text hover:scale-105 transition-all duration-300"
-        onClick={() => console.log("delete")}
+        onClick={ async() =>{ 
+          // const deletedData=await deleteData(`https://sepehradmanage.runflare.run/api/creditors/delete-creditor/${id}`)
+          // if (!deletedData) {
+            
+          // }
+          // }}
+         openModal()
+          console.log(isOpen)
+        }}
         icon={<ImBin className="text-Red-text" />}
       />
       <IconButton
@@ -51,7 +66,7 @@ const viewButtons = {
 const columns = [
   columnHelper.accessor("actions", {
     header: () => "",
-    cell: actionColumn.cell,
+    cell:(info)=> actionColumn.cell(info.cell.row.id),
   }),
   columnHelper.accessor("remaining_debt", {
     header: "مقدار مانده",
@@ -83,12 +98,7 @@ const columns = [
     cell: (info) => info.getValue(),
   }),
 ];
-
-
-const CreditorsList = () => {
-  const [data, setData] = useState<Omit<Credit, "actions">[]>([]);
-  const [isLoading,setIsLoading]=useState<Boolean>(false)
-  const navigate=useNavigate()
+ 
   useEffect(()=>{
     const creditorsList=async()=>{
 setIsLoading(true)
